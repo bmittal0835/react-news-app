@@ -1,24 +1,19 @@
-import React from 'react'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import NewsItem from './newsItem.component'
+import NewsItem from './newsItem.component';
+import NewsListHeader from './newsListHeader.component';
 
-const NewsList = ({ newsItems, onTodoClick }) => (
-  <ul>
-    {newsItems.map((news, index) => (
-      <NewsItem key={index} {...news} onClick={() => onTodoClick(index)} />
-    ))}
-  </ul>
-)
 
-NewsList.propTypes = {
-    newsItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      completed: PropTypes.bool.isRequired,
-      text: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired,
-  onTodoClick: PropTypes.func.isRequired
+export class NewsList extends Component {
+render() {
+  const {newsItems} = this.props;
+  
+  return (
+    <ul className="news-list__wrapper">
+      <NewsListHeader />
+      {newsItems.map((news, index) => (
+        <NewsItem key={index} item={news} />
+      ))}
+    </ul>
+  )}
 }
-
-export default NewsList
