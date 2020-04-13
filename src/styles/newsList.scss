@@ -1,7 +1,8 @@
 
 .news-list {
     &__main {
-    margin: 30px 15%;
+        margin: 0 auto;
+        max-width: 1024px;
     }
 
     &__header {
@@ -84,6 +85,9 @@
                 width: 10px;
                 margin-right: 2px;
                 display: inline-block;
+                position: absolute;
+                left: -3px;
+                top: 2px;
             }
 
             &__container:nth-child(odd) {
@@ -95,11 +99,16 @@
             }
 
             &__counts {
-                float:left;
+                display: inline-block;
+                vertical-align: top;
             }
 
             &__details {
                 display: inline-block;
+                width: calc(100% - 150px);
+                vertical-align: top;
+                position: relative;
+                padding-left: 10px;
             }
 
             &__comment {

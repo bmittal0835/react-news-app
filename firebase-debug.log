@@ -1,0 +1,10 @@
+[debug] [2020-04-13T08:55:11.483Z] ----------------------------------------------------------------------
+[debug] [2020-04-13T08:55:11.485Z] Command:       /usr/local/bin/node /usr/local/bin/firebase projects:create
+[debug] [2020-04-13T08:55:11.485Z] CLI Version:   8.0.2
+[debug] [2020-04-13T08:55:11.485Z] Platform:      darwin
+[debug] [2020-04-13T08:55:11.486Z] Node Version:  v12.14.1
+[debug] [2020-04-13T08:55:11.486Z] Time:          Mon Apr 13 2020 14:25:11 GMT+0530 (India Standard Time)
+[debug] [2020-04-13T08:55:11.486Z] ----------------------------------------------------------------------
+[debug] [2020-04-13T08:55:11.486Z] 
+[debug] [2020-04-13T08:55:11.494Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-13T08:55:11.494Z] > authorizing via signed-in user
