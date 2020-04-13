@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NewsList } from './newsList.component';
 import '../styles/newsList.scss'
+import loader from '../assets/images/loader.gif';
 
-import fetchNewsListAction from '../services/fetchNewsList';
+import newsListService from '../services/newsList.service';
 
 // import LoadingSpinner from './SomeLoadingSpinner';
 // import ProductList from './ProductList';
@@ -18,6 +18,7 @@ class NewsListView extends Component {
     componentWillMount() {
         const {fetchNewsList} = this.props;
         fetchNewsList();
+        // newsListService.fetchNewsList();
     }
 
     render() {
@@ -25,8 +26,9 @@ class NewsListView extends Component {
 
         return (
             <div className='news-list__main'>
-                {error && <span className='news-list__error'>{error}</span>}
-                <NewsList newsItems={newsListData} />
+                {error && <span className='news-list__error'>something went wrong. please try again..</span>}
+                {pending && <span className="news-list__loader-container"><img src={loader} className="news-list__loader"/></span>}
+                {!pending && <NewsList newsItems={newsListData} />}
             </div>
         )
     }
@@ -41,7 +43,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    fetchNewsList: fetchNewsListAction
+    fetchNewsList: newsListService.fetchNewsList
 }, dispatch)
 
 export default connect(

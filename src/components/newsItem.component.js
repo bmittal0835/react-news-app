@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import newsListService from '../services/newsList.service';
+import arrowUp from '../assets/images/arrowUp.gif';
 
 class NewsItem extends Component {
 render() {
 
   const parseURL = url => {
-    return new URL(url);
+    return url ? new URL(url) : '';
   };
 
   const getTimeDifference = createdDate => {
@@ -24,6 +28,16 @@ render() {
     }
   };
 
+  const onHideClick = item => {
+    const {hideItem} = this.props;
+    hideItem(item);
+  };
+
+  const onVoteClick = item => {
+    const {upvote} = this.props;
+    upvote(item);
+  };
+
   const {item} = this.props;
   return (item &&
     <li className="news-item__container">
@@ -32,18 +46,30 @@ render() {
         <span className="news-item__points">{item.points}</span>
       </div>
       <div className="news-item__details">
-        <span className="news-item__title"> {item.title}</span>
+        <span className="news-item__title" onClick={onVoteClick.bind(this, item)}> <img src={arrowUp} className="news-item__vote-icon"/> {item.title}</span>
         <span className="news-item__url small"> 
           <a href={item.url}>({parseURL(item.url).origin})</a>
         </span>
         <span className="news-item__author small"> by <strong>{item.author}</strong></span>
         <span className="news-item__time small"> {getTimeDifference(item.created_at_i)} </span>
         <span className="news-item__hide-link small">[
-          <span onClick={alert}>hide</span>
+          <span onClick={onHideClick.bind(this, item)}>hide</span>
         ]</span>
       </div>
     </li>
   )}
 }
 
-export default NewsItem;
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  hideItem: newsListService.hideNews,
+  upvote: newsListService.upvote
+}, dispatch)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewsItem );

@@ -9,6 +9,21 @@
         padding: 10px 10px;
     }
 
+    &__footer {
+        border-bottom: 2px solid #ff6602;
+        padding: 10px 10px 10px 40px;
+        background-color: rgb(246, 246, 239);;
+    }
+
+    &__error {
+        border: 2px solid #FF0000;
+        display: block;
+        padding: 3px 10px;
+        margin-bottom: 10px;
+        color: #FF0000;
+        font-size: 14px;
+    }
+
     &__logo {
         border: 1px solid #fff;
         vertical-align: middle;
@@ -26,6 +41,23 @@
         color: #000;
         cursor: pointer;
         font-size: 14px;
+    }
+
+    &__more-link {
+        cursor: pointer;
+        font-size: 12px;
+        color: #ff6602;
+        font-weight: 500;
+    }
+
+    &__loader-container {
+        text-align: center;
+        width:100%;
+        display: block;
+    }
+
+    &__loader {
+        width:100px;
     }
 
     &__wrapper {
@@ -48,6 +80,12 @@
                 font-size: 14px;
             }
 
+            &__vote-icon {
+                width: 10px;
+                margin-right: 2px;
+                display: inline-block;
+            }
+
             &__container:nth-child(odd) {
                 background-color: rgb(246, 246, 239);
             }
@@ -63,8 +101,6 @@
             &__details {
                 display: inline-block;
             }
-
-
 
             &__comment {
                 margin: 0 30px;
@@ -83,6 +119,7 @@
             &__title {
                 font-weight: 500;
                 display: inline-block;
+                cursor: pointer;
             }
 
             &__url {
